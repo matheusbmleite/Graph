@@ -1,3 +1,4 @@
+import pdb
 class Graph:
 	def __init__(self):
 		self.vertexes = {}
@@ -38,18 +39,18 @@ class Graph:
 		return len(self.adjacents(vertex))
 
 	def is_regular(self):
-		degree = self.order(self.a_vertex())
-		for vertex in self.vertex:
-			if self.order(vertex) != degree:
+		degree = self.degree(self.a_vertex())
+		for vertex in self.vertexes:
+			if self.degree(vertex) != degree:
 				return False
 		else:
 			return True
 
 	def is_full(self):
 		vertexes = self.vertexes
-		order = self.order
+		order = self.order()
 		for vertex in vertexes:
-			if self.degree(vertex) == (order - 1):
+			if not self.degree(vertex) == (order - 1):
 				return False
 		else:
 			return True
@@ -71,7 +72,8 @@ class Graph:
 				if vertex in visited:
 					return False
 				visited.add(vertex)
-				_is_tree_(vertex, visited)
+				if not _is_tree_(vertex, visited):
+					return False
 			return True
 
-		
+		return self.is_connected() and _is_tree_(self.a_vertex(), set())		
