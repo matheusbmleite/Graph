@@ -71,8 +71,7 @@ class Graph:
 				if vertex in visited:
 					return False
 				visited.add(vertex)
-				if not _is_tree_(vertex, visited):
-					return False
-			return True
+				_is_tree_(vertex, visited)
 
-		return self.is_connected() and _is_tree_(self.a_vertex(), set())		
+			return True
+		return self.is_connected() and _is_tree_(self.a_vertex(), set())
