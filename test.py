@@ -45,7 +45,7 @@ class GraphTestCase(unittest.TestCase):
 	def test_vertixes(self):
 		for i in range (1,5):
                         self.g.insert(i)
-		vertexes = {1, 2, 3, 4}
+		vertexes = [1, 2, 3, 4]
 		self.assertEqual(vertexes, self.g.vertexes())
 		
 	def test_a_vertex(self):
@@ -142,7 +142,18 @@ class GraphTestCase(unittest.TestCase):
 		self.g.disconnect(3,4)
 		self.g.disconnect(2,3)
 		self.assertTrue(self.g.is_tree())
-			
+
+	def test_has_cicle(self):
+		for i in range(1,5):		
+			self.g.insert(i)
+		self.g.connect(1,2)
+		self.g.connect(1,3)
+		self.g.connect(2,3)
+		self.g.connect(1,4)
+		self.assertTrue(self.g.has_cicle())
+		self.g.disconnect(2,3)
+		self.assertFalse(self.g.has_cicle())		
+
 
 if __name__ == '__main__': 
 	unittest.main()

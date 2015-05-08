@@ -75,3 +75,11 @@ class Graph:
 
 			return True
 		return self.is_connected() and _is_tree_(self.a_vertex(), set())
+
+
+	def has_cicle(self):
+		return not self.is_tree()
+
+	
+		
+
