@@ -42,6 +42,10 @@ class Graph:
 		vertex = self.a_vertex()
 		for aux_vertex in self._vertexes:
 			new = aux_vertex
+			if self.degree(new) == self.degree(vertex):
+				if new != vertex:
+					raise Exception("There are two vertexes with the same degree")
+					return 
 			if self.degree(new) > self.degree(vertex):
 				vertex = new
 		return vertex
