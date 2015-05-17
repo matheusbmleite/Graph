@@ -37,6 +37,15 @@ class Graph:
 	def degree(self, vertex):
 		return len(self.adjacents(vertex))
 
+
+	def greater_degree(self):
+		vertex = self.a_vertex()
+		for aux_vertex in self._vertexes:
+			new = aux_vertex
+			if self.degree(new) > self.degree(vertex):
+				vertex = new
+		return vertex
+
 	def is_regular(self):
 		degree = self.degree(self.a_vertex())
 		for vertex in self._vertexes:
@@ -79,7 +88,6 @@ class Graph:
 
 	def has_cicle(self):
 		return not self.is_tree()
-
 	
 		
 

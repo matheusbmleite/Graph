@@ -73,6 +73,21 @@ class GraphTestCase(unittest.TestCase):
 		degree = 1
 		self.assertEqual(degree, self.g.degree(2))
 		self.assertEqual(degree, self.g.degree(3))
+		
+
+	def test_greater_degree(self):
+		for i in range (1,5):
+			self.g.insert(i)
+		self.g.connect(1,2)
+		self.g.connect(1,3)
+		self.g.connect(1,4)
+		self.assertEqual(1, self.g.greater_degree())
+		self.g.disconnect(1,2)
+		self.g.connect(2,3)
+		self.g.connect(3,4)
+		self.assertEqual(3, self.g.greater_degree())
+		self.assertNotEqual(1, self.g.greater_degree())	
+
 
 	def test_is_regular(self):
 		for i in range(1,5):
